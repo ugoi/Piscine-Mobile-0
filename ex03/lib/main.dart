@@ -112,32 +112,41 @@ class _MyHomePageState extends State<MyHomePage> {
           Widget content = Column(
             children: <Widget>[
               Expanded(
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Container(
-                        //Right padding
-                        padding: const EdgeInsets.only(right: 40),
-                        alignment: Alignment.centerRight,
-                        child: Text(
-                          userInput,
-                          style: const TextStyle(
-                              fontSize: 30, color: Colors.white),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(right: 40),
-                        alignment: Alignment.centerRight,
-                        child: Text(
-                          answer,
-                          style: const TextStyle(
-                              fontSize: 30, color: Colors.white),
-                        ),
-                      )
-                    ]),
+                flex: 1,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  alignment: Alignment.centerRight,
+                  child: FittedBox(
+                    alignment: Alignment.centerRight,
+                    fit: BoxFit.contain,
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: <Widget>[
+                          Container(
+                            //Right padding
+                            // padding: const EdgeInsets.only(right: 40),
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              userInput,
+                              style: const TextStyle(
+                                  fontSize: 30, color: Colors.white),
+                            ),
+                          ),
+                          Container(
+                            // padding: const EdgeInsets.only(right: 40),
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              answer,
+                              style: const TextStyle(
+                                  fontSize: 30, color: Colors.white),
+                            ),
+                          )
+                        ]),
+                  ),
+                ),
               ),
               Expanded(
-                flex: 3,
+                flex: isLandscape ? 3 : 3,
                 child: LayoutBuilder(builder: (context, constraints) {
                   // Calculate the childAspectRatio based on the GridView's actual height
                   var width = constraints.maxWidth;
@@ -358,3 +367,78 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 }
+
+// import 'package:flutter/cupertino.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter/widgets.dart';
+
+// void main() {
+//   runApp(MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         body: Column(
+//           children: <Widget>[
+//             Flexible(
+//               flex: 1, // Takes 1/3 of the space
+//               child: Container(
+//                 color: Colors.blue, // Light blue box
+//                 child: Center(
+//                   child: FittedBox(
+//                     child: Column(
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       children: const [
+//                         Text('Box 1 (2/3)',
+//                             style:
+//                                 TextStyle(color: Colors.white, fontSize: 20)),
+//                         Text('Box 1 (2/3)',
+//                             style:
+//                                 TextStyle(color: Colors.white, fontSize: 20)),
+//                         Text('Box 1 (2/3)',
+//                             style:
+//                                 TextStyle(color: Colors.white, fontSize: 20)),
+//                         Text('Box 1 (2/3)',
+//                             style:
+//                                 TextStyle(color: Colors.white, fontSize: 20)),
+//                       ],
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//             ),
+//             Flexible(
+//               flex: 2, // Takes 2/3 of the space
+//               child: Container(
+//                 color: Colors.green, // Light green box
+//                 child: Center(
+//                   child: Column(
+//                     mainAxisAlignment: MainAxisAlignment.center,
+//                     children: const [
+//                       Text('Box 2 (2/3)',
+//                           style: TextStyle(color: Colors.white, fontSize: 20)),
+//                       Text('Box 2 (2/3)',
+//                           style: TextStyle(color: Colors.white, fontSize: 20)),
+//                       Text('Box 2 (2/3)',
+//                           style: TextStyle(color: Colors.white, fontSize: 20)),
+//                       Text('Box 2 (2/3)',
+//                           style: TextStyle(color: Colors.white, fontSize: 20)),
+//                       Text('Box 2 (2/3)',
+//                           style: TextStyle(color: Colors.white, fontSize: 20)),
+//                       Text('Box 2 (2/3)',
+//                           style: TextStyle(color: Colors.white, fontSize: 20)),
+//                       // Add more Text widgets as needed
+//                     ],
+//                   ),
+//                 ),
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
